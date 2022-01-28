@@ -11,7 +11,7 @@ from matplotlib import pyplot as plt
 
 makedirs(train_constructs["logging_dir"], exist_ok=True)
 
-logging.basicConfig(filename=pathjoin(train_constructs["logging_dir"], ".log"), encoding='utf-8', level=train_constructs["logging_level"])
+logging.basicConfig(filename=pathjoin(train_constructs["logging_dir"], ".log"), level=train_constructs["logging_level"])
 
 def save_nll_plot():
 	

@@ -9,6 +9,8 @@ from utils import save_gmm, load_gmm
 from trainConstructs import getDataset, train_constructs
 from matplotlib import pyplot as plt
 
+makedirs(train_constructs["logging_dir"], exist_ok=True)
+
 logging.basicConfig(filename=pathjoin(train_constructs["logging_dir"], ".log"), encoding='utf-8', level=train_constructs["logging_level"])
 
 def save_nll_plot():
@@ -48,7 +50,6 @@ for opt_idx in tqdm(range(train_constructs["num_iters"])):
 
 	logging.debug("Iteraion {} of EM algorithm done".format(opt_idx))
 
-makedirs(train_constructs["logging_dir"], exist_ok=True)
 save_gmm(gmm, pathjoin(train_constructs["logging_dir"], "trained_model.gmm"))
 np.savetxt(pathjoin(train_constructs["logging_dir"], "NLL.csv"), nlls, delim=",", header="NEGATIVE_LOG_LIKELIHOOD")
 save_nll_plot()

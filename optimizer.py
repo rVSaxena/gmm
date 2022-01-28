@@ -7,7 +7,7 @@ from os.path import join as pathjoin
 from gmm import GMM
 from utils import save_gmm, load_gmm
 from trainConstructs import getDataset, train_constructs
-from matplotlob import pyplot as plt
+from matplotlib import pyplot as plt
 
 logging.basicConfig(filename=pathjoin(train_constructs["logging_dir"], ".log"), encoding='utf-8', level=train_constructs["logging_level"])
 

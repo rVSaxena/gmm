@@ -1,6 +1,7 @@
 import logging
 import json
-import numpy 
+import numpy
+import tqdm
 from os import makedirs
 from os.path import join as pathjoin
 from gmm import GMM
@@ -29,7 +30,7 @@ nlls=[]
 
 logging.debug("Starting EM")
 
-for opt_idx in range(train_constructs["num_iters"]):
+for opt_idx in tqdm(range(train_constructs["num_iters"])):
 
 	# E step
 

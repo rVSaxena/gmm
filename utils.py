@@ -1,4 +1,5 @@
 import numpy as np
+import logging
 from gmm import GMM
 
 def save_gmm(model, file):
@@ -10,6 +11,8 @@ def save_gmm(model, file):
 
 	# The next num_components lines will contain the 1 mean array (as a comma separated str) per line
 	# The next num_components lines will contain 1 flattened cov mat (as a comma separated str) per line
+
+	logging.debug("Saving GMM to file: {}".format(file))
 
 	def log(arr):
 		f.write(",".join(map(str, arr))+"\n")
@@ -28,6 +31,8 @@ def save_gmm(model, file):
 	return
 
 def load_gmm(file):
+
+	logging.debug("Loading GMM from file: {}".format(file))
 
 	with open(file, 'r') as f:
 

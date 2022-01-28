@@ -1,3 +1,3 @@
-# A GMM to generate sound
+# A GMM trainer
 
-Here, a GMM is used to generate (or classify) motor engine sounds. The training dataset was engine track from 2021 Formula 1 cars on qualifying laps
+Here, a GMM, and associated training modules, are implemted. This is general enough to deal with high dimensional data, though GMMs are not a viable choice for extremely high dimensional data.

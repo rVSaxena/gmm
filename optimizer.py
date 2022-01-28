@@ -2,7 +2,7 @@ import logging
 import json
 import numpy 
 from os import makedirs
-fromos.path import join as pathjoin
+from os.path import join as pathjoin
 from gmm import GMM
 from utils import save_gmm, load_gmm
 from trainConstructs import getDataset, train_constructs

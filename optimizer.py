@@ -1,7 +1,7 @@
 import logging
 import json
 import numpy
-import tqdm
+from tqdm import tqdm
 from os import makedirs
 from os.path import join as pathjoin
 from gmm import GMM

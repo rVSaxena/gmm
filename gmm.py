@@ -1,3 +1,5 @@
+import numpy as np
+
 class GMM:
 
 	def __init__(self, num_components, dimensionality):
@@ -14,17 +16,22 @@ class GMM:
 	def pdf(self, x):
 
 		dimensionality=len(self.means[0])
-		part_prob=[
-		(
-			self.mixing_coeffs[i]*np.exp(-0.5*(x-self.means[i]).T@np.linalg.inv(self.covariances[i])@(x-self.means[i]))
-			/
-			np.sqrt(((2*np.pi)**dimensionality)*np.linalg.det(self.covariances[i]))
-			)
+		x=x.reshape((-1, dimensionality))
 
-		for i in range(self.num_components)
-		]
+		part_prob=np.zeros((x.shape[0], self.num_components))
 
-		return sum(part_prob), part_prob
+		for i in range(self.num_components):
+			part_prob[:, i]=self.mixing_coeffs[i]*np.exp(
+				np.sum(
+					np.multiply(
+						-0.5*(x-self.means[i], (x-self.means[i])*np.linalg.inv(self.covariances[i]))
+					),
+				axis=1
+				)
+			)/np.sqrt(((2*np.pi)**dimensionality)*np.linalg.det(self.covariances[i]))
+
+		return np.sum(part_prob, axis=1), part_prob
+
 
 	def responsibilities(self, x):
 

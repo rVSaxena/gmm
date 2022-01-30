@@ -24,7 +24,7 @@ class GMM:
 			part_prob[:, i]=self.mixing_coeffs[i]*np.exp(
 				np.sum(
 					np.multiply(
-						-0.5*(x-self.means[i], (x-self.means[i])*np.linalg.inv(self.covariances[i]))
+						-0.5*(x-self.means[i]), (x-self.means[i])*np.linalg.inv(self.covariances[i])
 					),
 				axis=1
 				)

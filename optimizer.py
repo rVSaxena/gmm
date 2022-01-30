@@ -1,16 +1,15 @@
 import logging
+from os.path import join as pathjoin
 import json
 import numpy
 from tqdm import tqdm
 from os import makedirs
-from os.path import join as pathjoin
 from gmm import GMM
 from utils import save_gmm, load_gmm
 from trainConstructs import getDataset, train_constructs
 from matplotlib import pyplot as plt
 
 makedirs(train_constructs["logging_dir"], exist_ok=True)
-
 logging.basicConfig(filename=pathjoin(train_constructs["logging_dir"], ".log"), level=train_constructs["logging_level"])
 
 def save_nll_plot():

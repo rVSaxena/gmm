@@ -21,14 +21,14 @@ class GMM:
 		part_prob=np.zeros((x.shape[0], self.num_components))
 
 		for i in range(self.num_components):
-			part_prob[:, i]=self.mixing_coeffs[i]*np.exp(
-				np.sum(
+			part_prob[:, i]=self.mixing_coeffs[i]*np.sqrt((2*np.pi)**(-1*dimensionality))*np.product(
+				np.exp(
 					np.multiply(
-						-0.5*(x-self.means[i]), (x-self.means[i])*np.linalg.inv(self.covariances[i])
+						-0.5*(x-self.means[i]), (x-self.means[i])@np.linalg.inv(self.covariances[i])
 					),
-				axis=1
-				)
-			)/np.sqrt(((2*np.pi)**dimensionality)*np.linalg.det(self.covariances[i]))
+				),
+			axis=1
+			)/np.sqrt(np.linalg.det(self.covariances[i]))
 
 		return np.sum(part_prob, axis=1), part_prob
 
